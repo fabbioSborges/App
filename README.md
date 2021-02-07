@@ -23,11 +23,19 @@ Acessar o site oficial [git](https://git-scm.com/downloads) e escolher o sistema
    yarn add express
 4. Criar o arquivo .gitgnore
 5. Criar a pasta SRC
+
    código da aplicação
+
    5.1 criar um arquivo app.js
+
    configurar o estrutura do servidor usando express
+
    5.2 criar um arquivo server.js
+
    configurar informações do servidor
+
    5.3 criar um arquivo routes.js
+
    arquivo com as rotas
+
 6. editando o express
