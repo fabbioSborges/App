@@ -40,8 +40,12 @@ Caracteristicas
 
    ```javascript
    //CRIAR A ESTRUTURA DA APLICAÇÂO
-   const express = require("express");
-   const routes = require("./routes");
+
+   /*const express = require('express')
+    const routes = require('./routes')*/
+
+   import express from "express";
+   import routes from "./routes";
 
    class App {
      constructor() {
@@ -59,15 +63,17 @@ Caracteristicas
      }
    }
 
-   module.exports = new App().server; //exportar o server para outro arquivo;
+   //module.exports = new App().server; //exportar o server para outro arquivo;
+
+   export default new App().server;
    ```
 
-   5.2 criar um arquivo server.js
+   5.2 criar um arquivo routes.js
 
    configurar informações do servidor
 
    ```javascript
-   const { Router } = require("express"); //importr apenas o Routers do express
+   import { Router } from "express"; //importr apenas o Routers do express
 
    const routes = new Router();
 
@@ -75,17 +81,35 @@ Caracteristicas
      return res.json({ mensagem: "helo world" });
    });
 
-   module.exports = routes;
+   export default routes;
    ```
 
-   5.3 criar um arquivo routes.js
+   5.3 criar um arquivo server.js
 
    arquivo com as rotas
 
    ```javascript
    //CRIAR O SERVIDOR
 
-   const app = require("./app");
+   import app from "./app";
 
    app.listen(3333);
    ```
+
+6. Alterar o package.json inserindo o scrips para executar o nodemon
+
+```javaScript
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+```
+
+7. Criar uma pasta nodemon.json para configurar o nodemon para executar junto com o sucrase
+
+```javascript
+{
+  "execMap": {
+    "js":"sucrase-node"
+  }
+}
+```

@@ -5,7 +5,14 @@
   "repository": "https://github.com/fabbioSborges/App.git",
   "author": "fabbioanderson@gmail.com <fabbioanderson@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sucrase": "^3.17.1"
   }
 }

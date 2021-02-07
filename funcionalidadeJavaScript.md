@@ -5,6 +5,6 @@
    - Sucrase possibilita algumas mudanças de sintaxe do javaScript
    - Nodemoon inicializa o servidor a cada mudança do código
 
-```
-yarn add sucrase nudemoon -D
-```
+   ```
+   yarn add sucrase nodemon -D
+   ```
