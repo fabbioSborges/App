@@ -38,7 +38,7 @@
    - -p PORTAORIGEM_SO:PORTADESTINO_CONTAINER - redirecionamento de porta
    - -d - nome da imagem que será executada
 
-     2.2. para iniciar um container use o comando
+   2.2. para iniciar um container use o comando
 
    ```
      docker start "nome do container ou ID"
