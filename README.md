@@ -20,7 +20,7 @@ Caracteristicas
   - git init: inicia o git
   - git clone "url": clona o repositorio da nuvem
   - git add <nome do arquivo> (Colocar '.' adiciona todos os arquivos)
-  - git commit "descrição do commit"
+  - git commit -m "descrição do commit"
   - git push: envia para repositorio git na nuvem as alterações
 
 ## Iniciando o Projeto
