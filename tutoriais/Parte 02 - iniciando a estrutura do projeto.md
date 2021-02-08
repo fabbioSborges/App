@@ -90,3 +90,15 @@
   }
 }
 ```
+
+8. Criar a pasta config dentro do src
+   Configurações da aplicação
+   - conexão com a base de dados
+   - outros serviços
+9. Criar a pasta database database dentro de src e dentro de database criar a pasta migrations
+
+10. Criar a pasta app
+
+11. Dentro da pasta app criar a pasta controllers
+
+12. Dentro da pasta app criar a pasta models
