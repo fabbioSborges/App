@@ -74,7 +74,7 @@ class User extends Model {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
         password: Sequelize.STRING,
-        restadorServico: Sequelize.BOOLEAN,
+        prestador_servico: Sequelize.BOOLEAN,
       },
       {
         sequelize,
