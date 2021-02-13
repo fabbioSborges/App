@@ -1,5 +1,11 @@
 # Controler de Usuario
 
+index
+show
+store
+update
+delete
+
 1. Criar na pasta controllers o arquivo UserControler.js
 
 2. Implementar o código
