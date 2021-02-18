@@ -54,3 +54,6 @@
    ```
 
 4. Testar no insominia
+
+5. Separar o id unico em um arquivo de configuração
+   5.1. Criar um arquivo auth.js dentro da pasta de configuração

@@ -2,6 +2,8 @@
 import User from '../models/User' 
 import jwt from 'jsonwebtoken'
 
+import authConfig from '../../config/auth' 
+
 class SessionControler{
   async store(req, res){
     const {email, password} = req.body
@@ -25,8 +27,8 @@ class SessionControler{
         name, 
         email
       },
-      token: jwt.sign({ id},  'textounico', {
-        expiresIn: '7d' // expirar em 7 dias
+      token: jwt.sign({ id},  authConfig.secret, {
+        expiresIn: authConfig.dataLimite // expirar em 7 dias
       }) // primeiro parametro payloud, segundo um texto unico, configurações do token 
     })
 
