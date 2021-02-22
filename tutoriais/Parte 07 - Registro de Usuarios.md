@@ -68,8 +68,10 @@ delete
    ```
 
 6. Criptografia da senha
+   
    6.1. Instalar o bcryptjs
    `yarn add bcryptjs`
+   
    6.2. Alterar o model user
 
 ```javaScript
