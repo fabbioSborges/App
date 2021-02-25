@@ -43,10 +43,14 @@ delete
    ```
 
 4. Testar a rota usando o insominia
+   
    4.1. Criar uma nova workspace
+   
    4.2. Criar uma pasta User
+  
    4.3. Criar uma nova variavel base
    `{ "base_url": "http://localhost:3333" }`
+   
    4.4. Criar uma requisição do tipo post com body json para criar usuario
 
    ```
@@ -68,8 +72,10 @@ delete
    ```
 
 6. Criptografia da senha
+   
    6.1. Instalar o bcryptjs
    `yarn add bcryptjs`
+   
    6.2. Alterar o model user
 
 ```javaScript
