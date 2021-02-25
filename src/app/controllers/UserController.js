@@ -1,8 +1,20 @@
-
+import * as Yup from 'yup'
+import { password } from '../../config/database'
 import User from '../models/User'
 
 class userController{
   async store(req, res) {
+    //validar os campos
+    const esquema = Yup.object().shape({
+      name: Yup.string().required(), // campo name é do tipo string e é obrigatorio
+      email: Yup.string().email().required(),
+      password: Yup.string().required().min(6)
+    })
+    if(!(await esquema.isValid(req.body))){
+      return res.status(400).json({mensagem: "Campos invalidos"})
+
+    }
+
     const userExists = await User.findOne({where: {email: req.body.email }})
 
     if(userExists){
@@ -17,6 +29,25 @@ class userController{
   }
 
   async update(req,res){
+    //validar os campos
+    const esquema = Yup.object().shape({
+      name: Yup.string(), 
+      email: Yup.string().email(),
+      passwordAntigo: Yup.string().min(6), 
+      password: Yup.string().min(6).when('passwordAntigo', (passwordAntigo, field) => 
+        passwordAntigo ? field.required() : field
+      ), //validação condicional
+      confirmarPassword: Yup.string().when('password', (password, field) => 
+        password ? field.required().oneOf([Yup.ref('password')]) : field
+      ), //validar o novo password
+    })
+
+
+    if(!(await esquema.isValid(req.body))){
+      return res.status(400).json({mensagem: "Campos invalidos"})
+
+    }
+
     const {email, passwordAntigo } = req.body;
     const user = await User.findByPk(req.userId) //buscar o usuario no banco de dados pelo id
 
