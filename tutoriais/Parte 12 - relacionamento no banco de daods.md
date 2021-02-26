@@ -36,7 +36,9 @@
 ```javascript
 ....
     static associate(models){
-        this.belongsTo(models.File, {foreignKey: 'avatar_id'}) //o model de File pertence a tabela de usuario
+        this.belongsTo(models.File, {foreignKey: 'avatar_id', as:'avatar'})
+        //o model de File pertence a tabela de usuario
+        //as: nome do relacinamento
       }
 
 ```
