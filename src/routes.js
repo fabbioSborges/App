@@ -27,4 +27,6 @@ routes.get('/prestadoservico', PrestadorServicoController.index)
 
 routes.post('/agendamento', AgendamentoController.store)
 
+routes.get('/agendamento', AgendamentoController.index)
+
 export default routes;

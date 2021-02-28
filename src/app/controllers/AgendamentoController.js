@@ -1,9 +1,39 @@
 import User from '../models/User'
 import Agendamento from '../models/Aagendamentos'
+import File from '../models/Files'
 import {startOfHour, parseISO, isBefore} from 'date-fns'
 import * as Yup from 'yup'
 
 class AgendamentoController{
+  async index(req, res){
+
+    const {page = 1} = req.query;
+
+    const agendamentos = await Agendamento.findAll({
+      where: {user_id:req.userId, cancelado: null},
+      order: ['date'],
+      limit: 20, //limit de registros carregados do banco
+      offset: (page-1)*20, //quantos registro quer pular
+      attributes: ['id', 'date', 'prestador_servico_id'],
+      include:[
+        {
+          model: User, 
+          as:  'prestador_servico',
+          attributes:['name', 'email', 'avatar_id'],
+          include:[
+            {
+              model:File,
+              as: 'avatar',
+              attributes: ['url', 'id', 'path']
+            }
+          ]
+        }
+      ]
+    });
+
+    return res.json(agendamentos);
+  }
+  
   async store(req,res){
     //validar os campos
     const esquema = Yup.object().shape({
