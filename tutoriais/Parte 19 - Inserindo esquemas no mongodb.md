@@ -52,3 +52,8 @@ export default mongoose.model("Notificacoes", NotificationSchema);
       user: prestador_servico_id
     })
 ```
+
+4. Instalar o mongo compass
+   https://www.mongodb.com/try/download/compass
+
+5. Criar um novo agendamento no insominia

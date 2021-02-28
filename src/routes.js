@@ -7,6 +7,7 @@ import FileController from './app/controllers/fileControler'
 import AgendamentoController from './app/controllers/AgendamentoController'
 import PrestadorServicoController from './app/controllers/PrestadorServicoController'
 import AgendaController from './app/controllers/AgendaController'
+import NotificacaoCntroller from './app/controllers/NotificacaoCntroller';
 import AuthMiddlware from './app/Middlewares/auth'
 import multerConfig from './config/multer'
 
@@ -30,6 +31,8 @@ routes.post('/agendamento', AgendamentoController.store)
 
 routes.get('/agendamento', AgendamentoController.index)
 
+
+routes.get('/notificacoes', NotificacaoCntroller.index)
 
 routes.get('/agendaservico', AgendaController.index)
 
