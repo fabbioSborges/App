@@ -34,6 +34,8 @@ routes.get('/agendamento', AgendamentoController.index)
 
 routes.get('/notificacoes', NotificacaoCntroller.index)
 
+routes.put('/notificacoes/:id', NotificacaoCntroller.update)
+
 routes.get('/agendaservico', AgendaController.index)
 
 export default routes;
