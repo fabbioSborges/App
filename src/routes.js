@@ -6,6 +6,7 @@ import SessionController from './app/controllers/sessionControler'
 import FileController from './app/controllers/fileControler'
 import AgendamentoController from './app/controllers/AgendamentoController'
 import PrestadorServicoController from './app/controllers/PrestadorServicoController'
+import AgendaController from './app/controllers/AgendaController'
 import AuthMiddlware from './app/Middlewares/auth'
 import multerConfig from './config/multer'
 
@@ -28,5 +29,8 @@ routes.get('/prestadoservico', PrestadorServicoController.index)
 routes.post('/agendamento', AgendamentoController.store)
 
 routes.get('/agendamento', AgendamentoController.index)
+
+
+routes.get('/agendaservico', AgendaController.index)
 
 export default routes;
