@@ -28,12 +28,11 @@ routes.post('/file',upload.single('file') , FileController.store)
 routes.get('/prestadoservico', PrestadorServicoController.index)
 
 routes.post('/agendamento', AgendamentoController.store)
-
 routes.get('/agendamento', AgendamentoController.index)
+routes.delete('/agendamento/:id', AgendamentoController.delete)
 
 
 routes.get('/notificacoes', NotificacaoCntroller.index)
-
 routes.put('/notificacoes/:id', NotificacaoCntroller.update)
 
 routes.get('/agendaservico', AgendaController.index)

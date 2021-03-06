@@ -4,8 +4,11 @@ import File from '../models/Files'
 import Notificacoes from '../esquemas/Notificacoes'
 import {startOfHour, parseISO, isBefore} from 'date-fns'
 import {format} from 'date-fns'
+import {subHours} from 'date-fns' //reduz o numero de horas
 import pt from 'date-fns/locale/pt'
 import * as Yup from 'yup'
+
+import Mail from '../../lib/mail'
 
 class AgendamentoController{
   async index(req, res){
@@ -104,6 +107,39 @@ class AgendamentoController{
 
     return res.json(agendamento);
 
+  }
+
+  async delete(req, res){
+    const agendamento = await Agendamento.findByPk(req.params.id, {
+      include: [
+        {
+          model:User,
+          as: 'prestador_servico',
+          attributes: ['name', 'email']
+        }
+      ]
+    });
+
+    if(agendamento.user_id != req.userId){
+      return res.status(401).json({mensagem: "usuario invalido"})
+    }
+
+    const dataSub = subHours(agendamento.date, 2); //remover duas horas
+    if(isBefore(dataSub, new Date())){
+      return res.status(401).json({mensagem: "O horario limite para cancelar o agendamento já apssou"})
+    }
+
+    agendamento.cancelado = new Date();
+
+    await agendamento.save();
+
+    await Mail.sendMail({
+      to: `${agendamento.prestador_servico.name} <${agendamento.prestador_servico.email}>`,
+      subject: "Agendamento Cancelado", 
+      text: 'Você tem um novo cancelamento!',
+    }).catch(console.error)
+
+    return res.json(agendamento);
   }
 }
 
