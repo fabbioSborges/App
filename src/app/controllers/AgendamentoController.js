@@ -8,7 +8,8 @@ import {subHours} from 'date-fns' //reduz o numero de horas
 import pt from 'date-fns/locale/pt'
 import * as Yup from 'yup'
 
-import Mail from '../../lib/mail'
+import cancelamentoEmail from '../jobs/cancelamentoEmail'
+import queue from '../../lib/queue'
 
 class AgendamentoController{
   async index(req, res){
@@ -138,7 +139,11 @@ class AgendamentoController{
 
     await agendamento.save();
 
-    await Mail.sendMail({
+    await queue.add(cancelamentoEmail.key, {
+      agendamento
+    })
+
+/*     await Mail.sendMail({
       to: `${agendamento.prestador_servico.name} <${agendamento.prestador_servico.email}>`,
       subject: "Agendamento Cancelado", 
       template: 'cancelamento',
@@ -151,7 +156,9 @@ class AgendamentoController{
           {locale:pt}
           ) 
       }
-    }).catch(console.error)
+    }).catch(console.error) */
+
+
 
     return res.json(agendamento);
   }
